@@ -43,7 +43,5 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
   })
 
-app.listen(process.env.PORT || 4000, function () {
-    console.log("Ready to GO!");
-});
+
 exports.app = functions.https.onRequest(app);
