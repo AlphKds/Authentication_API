@@ -8,7 +8,9 @@ const errors = require("./middlewares/errors");
 
 const {unless} = require("express-unless");
 const app = express();
-
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+  })
 mongoose.Promise = global.Promise;
 mongoose
     .connect(dbConfig.MONGO_URI, {
@@ -39,9 +41,8 @@ app.use(express.json());
 app.use("/users", require("./routes/users.routes"));
 
 app.use(errors.errorHandler);
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-  })
 
-
+app.listen(process.env.PORT || 4000, function () {
+    console.log("Ready to GO!");
+});
 exports.app = functions.https.onRequest(app);
