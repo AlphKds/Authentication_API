@@ -37,7 +37,11 @@ app.use(express.json());
 app.use('/users', require('./routes/users.routes'));
 
 app.use(errors.errorHandler);
-
+// Default Routes 
+app.get('/', (req, res) => {
+    res.json('message: Hello World!');
+    res.status(200);
+});
 exports.app = async (req, res) => {
 
   if (mongoose.connection.readyState !== 1) {
