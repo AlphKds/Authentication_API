@@ -1,0 +1,27 @@
+{
+  "name": "api_coba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run shell",
+    "deploy": "gcloud functions deploy  --trigger-http",
+    "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-unless": "^2.1.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.6",
+    "mongoose-unique-validator": "^4.0.0",
+    "nodemon": "^3.0.2"
+  }
+}
