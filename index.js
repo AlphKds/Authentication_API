@@ -42,7 +42,7 @@ app.use("/users", require("./routes/users.routes"));
 
 app.use(errors.errorHandler);
 
-app.listen(process.env.PORT || 8081, function () {
+app.listen(process.env.PORT || 8080, function () {
     console.log("Ready to GO!");
 });
 exports.app = functions.https.onRequest(app);
