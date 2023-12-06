@@ -1,0 +1,3 @@
+steps:
+  - name: 'gcr.in/cloud-builders/gcloud'
+    args: ['beta', 'functions', 'deploy', '${_NAME}', '--runtime=nodejs20', '--trigger-http', '--allow-unauthenticated']
