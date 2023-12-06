@@ -1,20 +1,17 @@
 const bcryptjs = require("bcryptjs");
 const userService = require("../services/users.services.js");
 
-exports.register = (req, res, next) => {
+exports.register = (req, res ,next) => {
+    console.log("Request Body:", req.body);
+    console.log("Request Body:", req.body);
     const { password } = req.body;
-
-    // Validate if the password is provided in the request body
-    if (!password) {
-        return res.status(400).json({ error: 'Password is required' });
-    }
-
+    console.log("Password:", password)
     const salt = bcryptjs.genSaltSync(10);
+    console.log("Salt:", salt);
 
-    // Hash the password before saving it to the database
     req.body.password = bcryptjs.hashSync(password, salt);
+    console.log("Hashed Password:", req.body.password);
 
-    // Call the userService to register the user
     userService.register(req.body, (error, result) => {
         if (error) {
             return next(error);
@@ -29,8 +26,7 @@ exports.register = (req, res, next) => {
 exports.login = (req, res, next) => {
     const { username, password } = req.body;
 
-    // Call the userService to perform login
-    userService.login({ username, password }, (error, result) => {
+    userService.login({username, password }, (error, result) => {
         if (error) {
             return next(error);
         }
@@ -42,5 +38,5 @@ exports.login = (req, res, next) => {
 };
 
 exports.userProfile = (req, res, next) => {
-    return res.status(200).json({ message: "Authorized User!" });
+    return res.status(200).json({message: "Authorized User!" });
 };
