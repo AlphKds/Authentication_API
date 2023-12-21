@@ -2,12 +2,13 @@ const bcryptjs = require("bcryptjs");
 const userService = require("../services/users.services.js");
 
 exports.register = (req, res ,next) => {
-    console.log("Request Body:", req.body);
-    console.log("Request Body:", req.body);
+		const body = {
+			'email': req.body.email,
+			'username': req.body.username
+		}
+    console.log("Request Body:", body);
     const { password } = req.body;
-    console.log("Password:", password)
     const salt = bcryptjs.genSaltSync(10);
-    console.log("Salt:", salt);
 
     req.body.password = bcryptjs.hashSync(password, salt);
     console.log("Hashed Password:", req.body.password);
