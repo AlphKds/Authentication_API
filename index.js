@@ -41,5 +41,9 @@ app.use(express.json());
 app.use(require("./routes/users.routes"));
 
 app.use(errors.errorHandler);
+const port=8080;
+app.listen(port, () =>{
+    console.log('Server started');
+})
 
 exports.app = functions.https.onRequest(app);
